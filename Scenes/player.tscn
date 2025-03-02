@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="1_c524d"]
 [ext_resource type="Texture2D" uid="uid://brgsm82w777ci" path="res://Sprites/CharacterPlaceholder.png" id="2_86a0o"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm4uv"]
-radius = 61.0
-height = 122.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cwgnq"]
+radius = 57.0
+height = 148.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldwax"]
 atlas = ExtResource("2_86a0o")
@@ -22,11 +22,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 script = ExtResource("1_c524d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_tm4uv")
+shape = SubResource("CapsuleShape2D_cwgnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t84qv")

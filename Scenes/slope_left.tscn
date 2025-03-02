@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3faf6irfoiut"]
+
+[ext_resource type="Script" path="res://Scripts/slope.gd" id="1_dy5cm"]
+
+[node name="slope_left" type="Area2D"]
+script = ExtResource("1_dy5cm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
