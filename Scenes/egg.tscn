@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhgkw1lssan7j"]
+
+[ext_resource type="Script" path="res://Scripts/egg.gd" id="1_jfivn"]
+[ext_resource type="Texture2D" uid="uid://bpm7tlxci73e8" path="res://Sprites/egg.png" id="2_0kep7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_injpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0kep7")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0m7qi"]
+radius = 50.0
+
+[node name="Egg" type="CharacterBody2D"]
+script = ExtResource("1_jfivn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_injpo")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0m7qi")
+one_way_collision_margin = 0.0

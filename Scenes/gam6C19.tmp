@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://ri5dho2tbc1s"]
+[gd_scene load_steps=8 format=4 uid="uid://ri5dho2tbc1s"]
 
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="1_r6w7y"]
 [ext_resource type="Texture2D" uid="uid://id81yk5qja1y" path="res://Sprites/background.png" id="3_w701a"]
 [ext_resource type="PackedScene" uid="uid://bhgkw1lssan7j" path="res://Scenes/egg.tscn" id="4_8tlb7"]
 [ext_resource type="TileSet" uid="uid://otvcepqieqmc" path="res://Tilesets/grassytrees.tres" id="4_wdqqk"]
@@ -7,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bpk0v6p1ljr2r" path="res://Sprites/leaf.png" id="6_wldfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx65l"]
-size = Vector2(49, 48)
+size = Vector2(179, 53)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_r6w7y")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -39,19 +41,15 @@ tile_set = ExtResource("4_wdqqk")
 tile_map_data = PackedByteArray("AAD8//r/AAAEAAAAAAD8//v/AAAEAAEAAAD8//z/AAAEAAIAAAD9//r/AAAEAAAAAAD9//v/AAAEAAEAAAD9//z/AAAEAAIAAAD+//r/AAAEAAAAAAD+//v/AAAEAAEAAAD+//z/AAAEAAIAAAD///z/AAAEAAIAAAAAAPz/AAAFAAIAAAD7//z/AAAEAAIAAAD6//z/AAADAAIAAAAAAPv/AAAFAAEAAAD6//v/AAADAAEAAAD7//v/AAAEAAEAAAD///v/AAAEAAEAAAD6//r/AAADAAAAAAD7//r/AAAEAAAAAAD///r/AAAEAAAAAAAAAPr/AAAFAAAAAAA=")
 tile_set = ExtResource("4_wdqqk")
 
+[node name="Egg" parent="." instance=ExtResource("4_8tlb7")]
+position = Vector2(-432, 32)
+
 [node name="Checkpoint" type="Area2D" parent="."]
-position = Vector2(6, 174)
 script = ExtResource("5_7xped")
 
 [node name="Sprite2D" type="Sprite2D" parent="Checkpoint"]
-position = Vector2(-8, 8)
 texture = ExtResource("6_wldfw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
-position = Vector2(3.5, 33)
+position = Vector2(6.5, 13.5)
 shape = SubResource("RectangleShape2D_bx65l")
-
-[node name="Egg" parent="Checkpoint" instance=ExtResource("4_8tlb7")]
-position = Vector2(-438, -142)
-
-[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="body_entered"]
