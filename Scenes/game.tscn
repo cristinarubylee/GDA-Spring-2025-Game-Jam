@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://ri5dho2tbc1s"]
+[gd_scene load_steps=10 format=4 uid="uid://ri5dho2tbc1s"]
 
 [ext_resource type="Texture2D" uid="uid://id81yk5qja1y" path="res://Sprites/background.png" id="3_w701a"]
 [ext_resource type="PackedScene" uid="uid://ddrqujvnkm6va" path="res://Scenes/egg.tscn" id="4_8tlb7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_7xped"]
 [ext_resource type="PackedScene" path="res://Scenes/stuck_camera.tscn" id="6_ka15m"]
 [ext_resource type="Texture2D" uid="uid://bpk0v6p1ljr2r" path="res://Sprites/leaf.png" id="6_wldfw"]
+[ext_resource type="PackedScene" uid="uid://djvyux6btrc2j" path="res://Scenes/butterfly.tscn" id="7_0wtgq"]
+[ext_resource type="PackedScene" uid="uid://bhk7csnjrjqh7" path="res://Scenes/caterpillar.tscn" id="7_fmgnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx65l"]
 size = Vector2(49, 48)
@@ -52,6 +54,12 @@ texture = ExtResource("6_wldfw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
 position = Vector2(3.5, 33)
 shape = SubResource("RectangleShape2D_bx65l")
+
+[node name="Caterpillar" parent="Checkpoint" instance=ExtResource("7_fmgnk")]
+position = Vector2(1405, 1737)
+
+[node name="Butterfly" parent="Checkpoint" instance=ExtResource("7_0wtgq")]
+position = Vector2(743, 1446)
 
 [node name="Egg" parent="Checkpoint" instance=ExtResource("4_8tlb7")]
 position = Vector2(-1123, -551)

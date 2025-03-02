@@ -4,10 +4,14 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var sprite = $AnimatedSprite2D
+@onready var camera = %stuck_camera
 
 
 func _physics_process(delta: float) -> void:
-
+	
+	if visible:
+		camera.get_y_pos(position.y)
+		
 	# Handle jump.gameplay actions.
 	var x_direction := Input.get_axis("ui_left", "ui_right")
 	if x_direction:

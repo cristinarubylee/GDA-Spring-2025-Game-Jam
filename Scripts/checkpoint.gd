@@ -1,16 +1,14 @@
 extends Area2D
 
-#func _ready():
-	#connect("body_entered", self, "_on_body_entered")
-
-#func _on_body_entered(_body):
-	#print("okay!")
+@onready var camera = %stuck_camera
+@onready var caterpillar = $Caterpillar
 
 func body_entered(body: Node2D) -> void:
 	if body.name == "Egg":
-		var caterpillar_scene = load("res://Scenes/caterpillar.tscn")
-		var caterpillar = caterpillar_scene.instantiate()
-		caterpillar.position = body.position + Vector2(0, -60)
+		caterpillar.position = body.position
+		caterpillar.visible = true
 		body.queue_free()
-		add_child(caterpillar)
-	
+	#if body.name == "Caterpillar" and not processed:
+		#butterfly.position = body.position
+		#body.queue_free()
+		#processed = true

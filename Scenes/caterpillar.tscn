@@ -18,6 +18,7 @@ animations = [{
 size = Vector2(210, 66)
 
 [node name="Caterpillar" type="CharacterBody2D"]
+visible = false
 script = ExtResource("1_dfoor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

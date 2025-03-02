@@ -6,12 +6,12 @@ var prev_isClimbing := false  # Track previous climbing state
 var wall_detect_distance := 5.0  # Distance to check for walls
 var wall_offset := 50.0  # Vertical offset from ground when first climbing (avoid clipping)
 @onready var sprite = $AnimatedSprite2D
-@onready var camera = $stuck_camera
+@onready var camera = %stuck_camera
 var isFalling := false
 
 func _physics_process(delta: float) -> void:
-	#
-	#camera.get_y_pos(position.y)
+	if visible:
+		camera.get_y_pos(position.y)
 	
 	# Default to ground movement
 	var surface_normal = Vector2.UP
