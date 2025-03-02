@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://b4jmp0xfjv4qq"]
 
 [ext_resource type="PackedScene" uid="uid://cnulc2qqx3mwu" path="res://Scenes/ramp.tscn" id="1_pv3qh"]
-[ext_resource type="PackedScene" uid="uid://ddrqujvnkm6va" path="res://Scenes/player.tscn" id="1_qxysy"]
+[ext_resource type="PackedScene" uid="uid://ddrqujvnkm6va" path="res://Scenes/egg.tscn" id="1_qxysy"]
 [ext_resource type="Texture2D" uid="uid://caude1qkc63dq" path="res://Sprites/GroundPlaceholder.png" id="2_yph62"]
 [ext_resource type="Texture2D" uid="uid://boaex0cx342pj" path="res://Sprites/New Piskel-1.png-2.png" id="3_ghegg"]
 [ext_resource type="Texture2D" uid="uid://bh7uyvrd03vsf" path="res://Sprites/New Piskel-1.png.png" id="4_ls13b"]

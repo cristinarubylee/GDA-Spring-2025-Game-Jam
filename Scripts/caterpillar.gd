@@ -6,8 +6,13 @@ var prev_isClimbing := false  # Track previous climbing state
 var wall_detect_distance := 5.0  # Distance to check for walls
 var wall_offset := 50.0  # Vertical offset from ground when first climbing (avoid clipping)
 @onready var sprite = $AnimatedSprite2D
+@onready var camera = %stuck_camera
+var isFalling := false
 
 func _physics_process(delta: float) -> void:
+	
+	#camera.get_y_pos(position.y)
+	
 	# Default to ground movement
 	var surface_normal = Vector2.UP
 	prev_isClimbing = isClimbing
@@ -16,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	var left_collision = move_and_collide(Vector2.LEFT * wall_detect_distance, true)
 	var right_collision = move_and_collide(Vector2.RIGHT * wall_detect_distance, true)
 	
-	if left_collision:
+	if left_collision and !isFalling:
 		surface_normal = left_collision.get_normal()
 		isClimbing = true
 		
@@ -25,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			var offset_vector = Vector2.UP * wall_offset
 			global_position = wall_position + offset_vector
 			
-	elif right_collision:
+	elif right_collision and !isFalling:
 		surface_normal = right_collision.get_normal()
 		isClimbing = true
 		
@@ -35,6 +40,7 @@ func _physics_process(delta: float) -> void:
 			global_position = wall_position + offset_vector
 			
 	elif is_on_floor():
+		isFalling = false
 		surface_normal = get_floor_normal()
 	
 	# Check if trying to get back to ground
@@ -73,6 +79,10 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("ui_down"):
 			velocity = Vector2.DOWN * speed
 			sprite.flip_h = true
+		if Input.is_action_just_pressed("ui_accept"):
+			isFalling = true
+			isClimbing = false
+			surface_normal = get_floor_normal()
 	
 	# Apply gravity
 	if not is_on_floor() and not isClimbing:
