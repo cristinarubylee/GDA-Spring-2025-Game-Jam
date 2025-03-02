@@ -7,7 +7,6 @@ var y_pos = 0.0
 func _ready() -> void:
 	x_pos = position.x
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position.x = x_pos
