@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ri5dho2tbc1s"]
 
 [ext_resource type="Texture2D" uid="uid://caude1qkc63dq" path="res://Sprites/GroundPlaceholder.png" id="1_38rbq"]
-[ext_resource type="PackedScene" uid="uid://ddrqujvnkm6va" path="res://Scenes/player.tscn" id="1_huvjc"]
+[ext_resource type="PackedScene" uid="uid://bhk7csnjrjqh7" path="res://Scenes/caterpillar.tscn" id="3_66j2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_byh5d"]
 texture = ExtResource("1_38rbq")
@@ -16,12 +16,12 @@ sources/0 = SubResource("TileSetAtlasSource_byh5d")
 
 [node name="Game" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_huvjc")]
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_udvyr")
 format = 2
-layer_0/tile_data = PackedInt32Array(131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65541, 0, 0, 65540, 0, 0, 131068, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 131066, 0, 0, 131067, 0, 0)
+layer_0/tile_data = PackedInt32Array(131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 4, 0, 0, 5, 0, 0, 65541, 0, 0, 65540, 0, 0, 131068, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 131066, 0, 0, 131067, 0, 0, -65532, 0, 0, -65531, 0, 0, -131068, 0, 0, -131067, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap"]
 position = Vector2(1, 0)
+
+[node name="Caterpillar" parent="." instance=ExtResource("3_66j2w")]
