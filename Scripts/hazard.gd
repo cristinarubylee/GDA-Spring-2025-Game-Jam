@@ -6,7 +6,7 @@ extends Area2D
 @onready var timer = $Timer
 
 func _on_body_entered(body: Node2D):
-	if body.name == "player":
+	if (body.name == "Egg") or (body.name == "Caterpillar") or (body.name == "Butterfly"):
 		timer.start()
 		print("dead")
 	
