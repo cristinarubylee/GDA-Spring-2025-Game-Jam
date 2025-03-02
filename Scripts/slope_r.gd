@@ -5,10 +5,10 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		print("On slope!")
-		player.on_left_slope()
+		player.on_right_slope()
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 		print("Off slope!")
-		player.off_left_slope()
+		player.off_right_slope()

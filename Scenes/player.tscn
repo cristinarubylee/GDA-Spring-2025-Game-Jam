@@ -1,21 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddrqujvnkm6va"]
+[gd_scene load_steps=5 format=3 uid="uid://ddrqujvnkm6va"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="1_c524d"]
-[ext_resource type="Texture2D" uid="uid://brgsm82w777ci" path="res://Sprites/CharacterPlaceholder.png" id="2_86a0o"]
+[ext_resource type="Texture2D" uid="uid://bpm7tlxci73e8" path="res://Sprites/egg.png" id="2_rhqfu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cwgnq"]
-radius = 57.0
-height = 148.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ldwax"]
-atlas = ExtResource("2_86a0o")
-region = Rect2(0, 0, 120, 120)
+[sub_resource type="CircleShape2D" id="CircleShape2D_15f2o"]
+radius = 50.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t84qv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ldwax")
+"texture": ExtResource("2_rhqfu")
 }],
 "loop": true,
 "name": &"default",
@@ -26,8 +21,12 @@ animations = [{
 script = ExtResource("1_c524d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_cwgnq")
+shape = SubResource("CircleShape2D_15f2o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t84qv")
 autoplay = "default"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-49, -1)
+target_position = Vector2(-7, 0)

@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-enum States {EGG, CATERPILLAR, BUTTERFLY}
-
-var state: States = States.CATERPILLAR
 
 var rotation_speed = 0
 
@@ -11,15 +8,11 @@ var jump_buffer = 0.0
 var is_left_slope = 0.0
 var is_right_slope = 0.0
 
+@onready var raycast = $RayCast2D
+
 
 const EGG_SPEED = 300.0
 const EGG_JUMP_VELOCITY = -100.0
-
-const CATERPILLAR_SPEED = 300.0
-const CATERPILLAR_JUMP_VELOCITY = -600.0
-
-const BUTTERFLY_SPEED = 300.0
-const BUTTERFLY_JUMP_VELOCITY = -1200.0
 
 
 func _physics_process(delta: float) -> void:
@@ -27,23 +20,12 @@ func _physics_process(delta: float) -> void:
 	var current_speed = 150.0
 	var current_jump = -50.0
 	
-	#Sets speed and jump depending on state
-	if (state == States.EGG):
-		current_speed = EGG_SPEED
-		current_jump = EGG_JUMP_VELOCITY
-	elif (state == States.CATERPILLAR):
-		current_speed = CATERPILLAR_SPEED
-		current_jump = CATERPILLAR_JUMP_VELOCITY
-	elif (state == States.BUTTERFLY):
-		current_speed = BUTTERFLY_SPEED
-		current_jump = BUTTERFLY_JUMP_VELOCITY
+	current_speed = EGG_SPEED
+	current_jump = EGG_JUMP_VELOCITY
 	
 	# Gravity
 	if not is_on_floor():
-		if (state == States.BUTTERFLY):
-			velocity += get_gravity() * delta / 2
-		else:
-			velocity += get_gravity() * delta
+		velocity += get_gravity() * delta
 			
 		rotation_speed += sin(rotation) * delta
 
@@ -85,9 +67,20 @@ func _physics_process(delta: float) -> void:
 		velocity.x -= current_speed * 2 * delta
 		#velocity.y = 900
 	
+	if (raycast.is_colliding()):
+		if (is_left_slope == 0 and is_right_slope == 0):
+			if (velocity.x > 0):
+				print("test")
+				#velocity.x = 0.0
+			print(raycast.get_collider())
+	
 	apply_floor_snap()
 
 	move_and_slide()
+	
+	
+#RAMP
+
 
 func on_left_slope():
 	is_left_slope = 0.1
@@ -108,3 +101,8 @@ func off_right_slope():
 func ramp():
 	velocity.y = abs(velocity.x) * -0.5
 	print("ramp call")
+
+
+#RayCast Collision
+#This prevents the player from getting stuck
+#in the wall when moving too fast

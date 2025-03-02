@@ -46,7 +46,7 @@ a = Vector2(-872, -892)
 b = Vector2(74, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_856e2"]
-size = Vector2(120, 120)
+size = Vector2(340, 120)
 
 [node name="EggTest" type="Node"]
 
@@ -85,7 +85,7 @@ shape = SubResource("SegmentShape2D_qgehe")
 position = Vector2(578, 481)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hazard"]
-position = Vector2(-33, -427)
+position = Vector2(77, -427)
 shape = SubResource("RectangleShape2D_856e2")
 
 [connection signal="body_exited" from="slope_left" to="slope_left" method="_on_body_exited"]
