@@ -1,39 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhk7csnjrjqh7"]
 
 [ext_resource type="Script" path="res://Scripts/caterpillar.gd" id="1_dfoor"]
-[ext_resource type="Texture2D" uid="uid://bvkl823h1gwj4" path="res://icon.svg" id="1_h6x86"]
+[ext_resource type="Texture2D" uid="uid://8sxsrn6fn4oq" path="res://Sprites/caterpillar.png" id="2_w65ow"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_injpo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_h6x86")
+"texture": ExtResource("2_w65ow")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phjoh"]
-size = Vector2(128, 128)
+size = Vector2(210, 66)
 
 [node name="Caterpillar" type="CharacterBody2D"]
 script = ExtResource("1_dfoor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_injpo")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_phjoh")
 one_way_collision_margin = 0.0
 
 [node name="GroundRay" type="RayCast2D" parent="."]
 target_position = Vector2(0, 70)
-
-[node name="RightWallRay" type="RayCast2D" parent="."]
-position = Vector2(0, 61)
-target_position = Vector2(65, 0)
-
-[node name="LeftWallRay" type="RayCast2D" parent="."]
-position = Vector2(0, 61)
-target_position = Vector2(-65, 0)
